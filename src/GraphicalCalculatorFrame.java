@@ -214,7 +214,14 @@ public class GraphicalCalculatorFrame extends JFrame
 		public void mouseClicked(MouseEvent e)
 		{
 			// If the mouse clicked within a region, set that region to be the selected region.
-			// TODO: check if a clicked point is within a region. If so, set that region to be selected.
+		    Point clicked = new Point(e.getX(), e.getY());
+		    for(int i = 0; i < regions.length; i++) {
+		        if (regions[i].contains(clicked)) {
+		            selectedRegion = i;
+		        }
+		    }
+		   
+			//check if a clicked point is within a region. If so, set that region to be selected.
 
 			// Repaint the panel (this will implicitly call paintComponent):
 			this.repaint();
@@ -232,8 +239,8 @@ public class GraphicalCalculatorFrame extends JFrame
 		public boolean setSelectedRegionContents(String content)
 		{
 			boolean success = true;
-
-			/* TODO: attempt to set the value of the selected region.
+			int number = 0;
+			/* attempt to set the value of the selected region.
 			 *
 			 * Remember that the regions are associated with the operand and operators as such:
 			 * region0 = operand0
@@ -244,6 +251,42 @@ public class GraphicalCalculatorFrame extends JFrame
 			 *
 			 * Return false if the set operation cannot be done.
 			 */
+			if(selectedRegion % 2 == 0) {
+		         if (!content.equals("+") || content.equals("-") || content.equals("*")) {
+		                number = Integer.parseInt(content);
+		                switch(selectedRegion) {
+		                    case 0:
+		                        operands[0] = number;
+		                        break;
+		                    case 2:
+		                        operands[1] = number;
+		                        break;
+		                    case 4:
+		                        operands[2] = number;
+		                         break;
+		                }
+		            }
+		         else {
+		             success = false;
+		         }
+			}
+			else {
+			    if (content.equals("+") || content.equals("-") || content.equals("*")) {
+			        switch(selectedRegion) {
+			            case 1:
+			                operators[0] = content;
+			                break;
+			            case 3:
+			                operators[1] = content;
+			                break;
+			        }
+			    }
+			    else {
+			        success = false;
+			    }
+			}
+
+			
 
 			this.repaint();
 
@@ -259,6 +302,33 @@ public class GraphicalCalculatorFrame extends JFrame
 		public int evaluate()
 		{
 			// TODO: evaluate the expression. (operand0 operator0 operand1) operator1 operand2
+		    int total = 0;
+		    int a,b,c;
+		    a = operands[0];
+		    b = operands[1];
+		    c = operands[2];
+		    String d,e;
+		    d = operators[0];
+		    e = operators[1];
+		    if (d.equals("+")) {
+		        total = a + b;
+		    }
+		    else if (d.equals("-")) {
+		        total = a - b;
+		    }
+		    else if (d.equals("*")){
+		        total = a * b;
+		    }
+		    
+            if (e.equals("+")) {
+                total = total + c;
+            }
+            else if (e.equals("-")) {
+                total = total - c;
+            }
+            else if (e.equals("*")){
+                total = total * c;
+            }
 		}
 
 		/** DO NOT MODIFY - DOES NOTHING */
