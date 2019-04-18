@@ -159,8 +159,11 @@ public class GraphicalCalculatorFrame extends JFrame
 		protected void paintComponent(Graphics g)
 		{
 			super.paintComponent(g);
-
-			// TODO: Draw bounding boxes on all regions (regions are stored as rectangles):
+            g.setColor(Color.BLACK);
+			for(Rectangle rect : regions) {
+			    g.drawRect(rect.x, rect.y, rect.width, rect.height);
+			}
+			// Draw bounding boxes on all regions (regions are stored as rectangles):
 
 			// Draw the text at the specified text points:
 			// Pattern is: operand operator operand operator operand = result
@@ -193,7 +196,10 @@ public class GraphicalCalculatorFrame extends JFrame
 				g.drawString(drawString, textPoints[pt].x, textPoints[pt].y);
 			}
 
-			// TODO: Draw translucent rectangle over selected region (use the highlight color):
+            g.setColor(highlight);
+            for(Rectangle rect : regions) {
+                g.fillRect(rect.x, rect.y, rect.width, rect.height);
+            }			// Draw translucent rectangle over selected region (use the highlight color):
 		}
 
 		/**
