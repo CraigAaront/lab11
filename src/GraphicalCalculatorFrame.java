@@ -301,7 +301,7 @@ public class GraphicalCalculatorFrame extends JFrame
 		 */
 		public int evaluate()
 		{
-			// TODO: evaluate the expression. (operand0 operator0 operand1) operator1 operand2
+			//evaluate the expression. (operand0 operator0 operand1) operator1 operand2
 		    int total = 0;
 		    int a,b,c;
 		    a = operands[0];
@@ -329,6 +329,7 @@ public class GraphicalCalculatorFrame extends JFrame
             else if (e.equals("*")){
                 total = total * c;
             }
+            return total;
 		}
 
 		/** DO NOT MODIFY - DOES NOTHING */
@@ -421,8 +422,18 @@ public class GraphicalCalculatorFrame extends JFrame
         this.setLayout(new GridLayout(2, 0));
 
         // TODO: add components to panels
+        panel1.add(operandEntry);
+        panel2.add(add);
+        panel2.add(subtract);
+        panel2.add(multiply);
+        panel3.add(setOperand);
+        panel3.add(setOperator);
 
         // TODO: add radio buttons to the button group
+        ops.add(add);
+        ops.add(subtract);
+        ops.add(multiply);
+        
         //default to + operator
         add.setSelected(true); //remember, the button group ensures only one button is selected
 
