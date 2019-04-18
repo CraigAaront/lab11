@@ -196,10 +196,11 @@ public class GraphicalCalculatorFrame extends JFrame
 				g.drawString(drawString, textPoints[pt].x, textPoints[pt].y);
 			}
 
-            g.setColor(highlight);
-            for(Rectangle rect : regions) {
-                g.fillRect(rect.x, rect.y, rect.width, rect.height);
-            }			// Draw translucent rectangle over selected region (use the highlight color):
+			
+			Rectangle select = regions[selectedRegion];
+			g.setColor(highlight);
+			g.fillRect(select.x, select.y, select.width, select.height);
+			// Draw translucent rectangle over selected region (use the highlight color):
 		}
 
 		/**
@@ -421,7 +422,7 @@ public class GraphicalCalculatorFrame extends JFrame
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setLayout(new GridLayout(2, 0));
 
-        // TODO: add components to panels
+        // : add components to panels
         panel1.add(operandEntry);
         panel2.add(add);
         panel2.add(subtract);
@@ -429,7 +430,7 @@ public class GraphicalCalculatorFrame extends JFrame
         panel3.add(setOperand);
         panel3.add(setOperator);
 
-        // TODO: add radio buttons to the button group
+        // : add radio buttons to the button group
         ops.add(add);
         ops.add(subtract);
         ops.add(multiply);
@@ -438,7 +439,11 @@ public class GraphicalCalculatorFrame extends JFrame
         add.setSelected(true); //remember, the button group ensures only one button is selected
 
         // TODO: add sub-panels into panel 0
-
+        panel0.add(panel1);
+        panel0.add(panel3);
+        panel0.add(panel2);
+        panel0.add(panel4);
+        
         // Adds all panels to frame:
         panel0.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT - 300));
 
@@ -469,6 +474,7 @@ public class GraphicalCalculatorFrame extends JFrame
          */
         setOperator.addActionListener((e) -> {
     		// TODO: attempt to modify the selected region in gcPanel with the new operator value.
+        }
         );
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
