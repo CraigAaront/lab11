@@ -168,7 +168,10 @@ public class GraphicalCalculatorFrame extends JFrame
 		protected void paintComponent(Graphics g)
 		{
 			super.paintComponent(g);
+			
+			//sets the rectangle color to black
             g.setColor(Color.BLACK);
+            //for loop draws the rectangles without fill, with a black color
 			for(Rectangle rect : regions) {
 			    g.drawRect(rect.x, rect.y, rect.width, rect.height);
 			}
@@ -205,11 +208,11 @@ public class GraphicalCalculatorFrame extends JFrame
 				g.drawString(drawString, textPoints[pt].x, textPoints[pt].y);
 			}
 
-			
+			// Draws translucent rectangle over selected region (using the highlight color)
 			Rectangle select = regions[selectedRegion];
 			g.setColor(highlight);
 			g.fillRect(select.x, select.y, select.width, select.height);
-			// Draw translucent rectangle over selected region (use the highlight color):
+			
 		}
 
 		/**
