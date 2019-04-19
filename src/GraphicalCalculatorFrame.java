@@ -459,7 +459,7 @@ public class GraphicalCalculatorFrame extends JFrame
          * If the set operation succeeds, clear any error messages.
          */
         setOperand.addActionListener((e) -> {
-        		// TODO: attempt to modify the selected region in gcPanel with the new operand value.
+        		//attempt to modify the selected region in gcPanel with the new operand value.
                 if (gcPanel.setSelectedRegionContents(operandEntry.getText()) == true){
                     errorMessage.setText("");
                     panel4.revalidate();
@@ -483,9 +483,42 @@ public class GraphicalCalculatorFrame extends JFrame
          * If the set operation succeeds, clear any error messages.
          */
         setOperator.addActionListener((e) -> {
-    		// TODO: attempt to modify the selected region in gcPanel with the new operator value.
+    		//  attempt to modify the selected region in gcPanel with the new operator value.
             if(add.isSelected() == true) {
-                
+                if (gcPanel.setSelectedRegionContents("+") == true) {
+                    errorMessage.setText("");
+                    panel4.revalidate();
+                }
+                else {
+                    errorMessage.setText("Failed to set operator value");
+                    panel4.revalidate(); 
+                }
+
+            }
+            else if(subtract.isSelected() == true) {
+                if (gcPanel.setSelectedRegionContents("-") == true) {
+                    errorMessage.setText("");
+                    panel4.revalidate();
+                }
+                else {
+                    errorMessage.setText("Failed to set operator value");
+                    panel4.revalidate(); 
+                }
+            }
+            else if(multiply.isSelected() == true) {
+                if (gcPanel.setSelectedRegionContents("*") == true) {
+                    errorMessage.setText("");
+                    panel4.revalidate();
+                }
+                else {
+                    errorMessage.setText("Failed to set operator value");
+                    panel4.revalidate(); 
+                }
+            }
+            
+            else {
+                errorMessage.setText("Failed to set operator value");
+                panel4.revalidate();                
             }
         }
         );
