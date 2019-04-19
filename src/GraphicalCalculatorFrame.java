@@ -253,8 +253,8 @@ public class GraphicalCalculatorFrame extends JFrame
 			 * Return false if the set operation cannot be done.
 			 */
 			if(selectedRegion % 2 == 0) {
-		         if (!content.equals("+") || content.equals("-") || content.equals("*")) {
-		                number = Integer.parseInt(content);
+			    try {
+			        number = Integer.parseInt(content);
 		                switch(selectedRegion) {
 		                    case 0:
 		                        operands[0] = number;
@@ -267,7 +267,7 @@ public class GraphicalCalculatorFrame extends JFrame
 		                         break;
 		                }
 		            }
-		         else {
+		         catch (NumberFormatException ex) {
 		             success = false;
 		         }
 			}
@@ -429,6 +429,7 @@ public class GraphicalCalculatorFrame extends JFrame
         panel2.add(multiply);
         panel3.add(setOperand);
         panel3.add(setOperator);
+        panel4.add(errorMessage);
 
         // : add radio buttons to the button group
         ops.add(add);
@@ -459,6 +460,15 @@ public class GraphicalCalculatorFrame extends JFrame
          */
         setOperand.addActionListener((e) -> {
         		// TODO: attempt to modify the selected region in gcPanel with the new operand value.
+                if (gcPanel.setSelectedRegionContents(operandEntry.getText()) == true){
+                    errorMessage.setText("");
+                    panel4.revalidate();
+                    
+                }
+                else {
+                    errorMessage.setText("Failed to set operand value");
+                    panel4.revalidate();
+                   }                   
         	}
         );
 
@@ -474,6 +484,9 @@ public class GraphicalCalculatorFrame extends JFrame
          */
         setOperator.addActionListener((e) -> {
     		// TODO: attempt to modify the selected region in gcPanel with the new operator value.
+            if(add.isSelected() == true) {
+                
+            }
         }
         );
 
