@@ -227,7 +227,10 @@ public class GraphicalCalculatorFrame extends JFrame
 		public void mouseClicked(MouseEvent e)
 		{
 			// If the mouse clicked within a region, set that region to be the selected region.
+		    // clicked is the point at which the mouse is clicked
 		    Point clicked = new Point(e.getX(), e.getY());
+		    
+		    // for loop checks if clicked is in one of the 5 predefined regions and sets that region to selected region
 		    for(int i = 0; i < regions.length; i++) {
 		        if (regions[i].contains(clicked)) {
 		            selectedRegion = i;
@@ -264,9 +267,14 @@ public class GraphicalCalculatorFrame extends JFrame
 			 *
 			 * Return false if the set operation cannot be done.
 			 */
+			
+			// if the selected region is region 0, 2, or 4 then its one of the number/operand regions
 			if(selectedRegion % 2 == 0) {
+			    // checks if the input is an int, if not then it throws an error
 			    try {
 			        number = Integer.parseInt(content);
+			        // checks if the number is 0-9, and if so then assigns that number to the correct operand location  
+			        // based on the selected region
 			        if (number >= 0 && number <= 9) {
 		                switch(selectedRegion) {
 		                    case 0:
@@ -280,16 +288,21 @@ public class GraphicalCalculatorFrame extends JFrame
 		                         break;
 		                }
 		            }
+			        // fails if the number isn't 1-9
 			        else {
 			            success = false;
 			        }
 			    }
+			    // fails if the input isnt a number
 		         catch (NumberFormatException ex) {
 		             success = false;
 		         }
 			}
+			// if the selected region is 1 or 3 which is an operator region
 			else {
+			    //checks if the input is one of the predefined operators of +, -, or *
 			    if (content.equals("+") || content.equals("-") || content.equals("*")) {
+			        // sets the appropriate operator region in the array to the right operator
 			        switch(selectedRegion) {
 			            case 1:
 			                operators[0] = content;
@@ -299,6 +312,7 @@ public class GraphicalCalculatorFrame extends JFrame
 			                break;
 			        }
 			    }
+			    // fails if the operator isn't one of the predefined
 			    else {
 			        success = false;
 			    }
@@ -316,14 +330,17 @@ public class GraphicalCalculatorFrame extends JFrame
 		public int evaluate()
 		{
 			//evaluate the expression. (operand0 operator0 operand1) operator1 operand2
+		    //assigns the operands (3 total) to letters a,b,c to make expressions easier
 		    int total = 0;
 		    int a,b,c;
 		    a = operands[0];
 		    b = operands[1];
 		    c = operands[2];
+		    // assigns the operators (2 total) to letters d,e to make expressions easier
 		    String d,e;
 		    d = operators[0];
 		    e = operators[1];
+		    // following if/else statements evaluate based on what the operators are, disregarding precedence
 		    if (d.equals("+")) {
 		        total = a + b;
 		    }
@@ -436,12 +453,19 @@ public class GraphicalCalculatorFrame extends JFrame
         this.setLayout(new GridLayout(2, 0));
 
         // : add components to panels
+        //adds the text box to panel1
         panel1.add(operandEntry);
+        //adds the add radiobutton to panel2
         panel2.add(add);
+        //adds the subtract radiobutton to panel2
         panel2.add(subtract);
+        //adds the multiply radiobutton to panel2
         panel2.add(multiply);
+        //adds the setOperand button to panel3 
         panel3.add(setOperand);
+        //adds the setOperator button to panel3
         panel3.add(setOperator);
+        //adds the blank error panel to panel4
         panel4.add(errorMessage);
 
         // : add radio buttons to the button group
