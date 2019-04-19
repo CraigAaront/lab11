@@ -469,6 +469,7 @@ public class GraphicalCalculatorFrame extends JFrame
         panel4.add(errorMessage);
 
         // : add radio buttons to the button group
+        // adds all radiobuttons to the group
         ops.add(add);
         ops.add(subtract);
         ops.add(multiply);
@@ -477,6 +478,8 @@ public class GraphicalCalculatorFrame extends JFrame
         add.setSelected(true); //remember, the button group ensures only one button is selected
 
         //add sub-panels into panel 0
+        // adds panel1 first, then panel3, then panel2, then panel4 since its a grid bag layout, meaning
+        // left to right, top to bottom 
         panel0.add(panel1);
         panel0.add(panel3);
         panel0.add(panel2);
