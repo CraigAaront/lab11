@@ -116,6 +116,15 @@ public class GraphicalCalculatorFrame extends JFrame
 		 */
 		private void setupRegions()
 		{
+		    /**
+		     * initializes regions to an array of length 5; regions are REGION_INC X away
+		     * from each other in the x direction and in the same y plane
+		     * region0 = first region, left most rectangle
+		     * region1 = second region, 2nd from the left
+		     * region2 = third region, 3rd from the left
+		     * region3 = fourth region, 4th from the left
+		     * region4 = fifth region, 5th from the left
+		     */
 			regions = new Rectangle[5];
 			regions[0] = new Rectangle(REGION_START_X,REGION_START_Y,REGION_HEIGHT,REGION_WIDTH);
             regions[1] = new Rectangle(REGION_START_X + REGION_INC_X,REGION_START_Y,REGION_HEIGHT,REGION_WIDTH);
@@ -291,11 +300,7 @@ public class GraphicalCalculatorFrame extends JFrame
 			        success = false;
 			    }
 			}
-
-			
-
 			this.repaint();
-
 			return success;
 		}
 
@@ -444,7 +449,7 @@ public class GraphicalCalculatorFrame extends JFrame
         //default to + operator
         add.setSelected(true); //remember, the button group ensures only one button is selected
 
-        // TODO: add sub-panels into panel 0
+        //add sub-panels into panel 0
         panel0.add(panel1);
         panel0.add(panel3);
         panel0.add(panel2);
