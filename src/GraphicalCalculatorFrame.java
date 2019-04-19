@@ -500,11 +500,16 @@ public class GraphicalCalculatorFrame extends JFrame
          */
         setOperand.addActionListener((e) -> {
         		//attempt to modify the selected region in gcPanel with the new operand value.
+            
+                // if the setSelectedRegionContents returns true for the gcpanel, then the values are set 
+                // and the error message is reset
                 if (gcPanel.setSelectedRegionContents(operandEntry.getText()) == true){
                     errorMessage.setText("");
                     panel4.revalidate();
                     
                 }
+                // if the setSelectedRegionContents return false, then an error message is returned in 
+                // panel4
                 else {
                     errorMessage.setText("Failed to set operand value");
                     panel4.revalidate();
@@ -524,38 +529,48 @@ public class GraphicalCalculatorFrame extends JFrame
          */
         setOperator.addActionListener((e) -> {
     		//  attempt to modify the selected region in gcPanel with the new operator value.
+            
+            // if the add button is selected, and setSelectedRegionContents is true, then the
+            // error in panel4 is reset and the operator is changed
             if(add.isSelected() == true) {
                 if (gcPanel.setSelectedRegionContents("+") == true) {
                     errorMessage.setText("");
                     panel4.revalidate();
                 }
+                // if setSelectedRegionContents is false, then panel4 displays an error message
                 else {
                     errorMessage.setText("Failed to set operator value");
                     panel4.revalidate(); 
                 }
 
             }
+            // if the subtract button is selected, and setSelectedRegionContents is true, then the
+            // error in panel4 is reset and the operator is changed
             else if(subtract.isSelected() == true) {
                 if (gcPanel.setSelectedRegionContents("-") == true) {
                     errorMessage.setText("");
                     panel4.revalidate();
                 }
+                // if setSelectedRegionContents is false, then panel4 displays an error message
                 else {
                     errorMessage.setText("Failed to set operator value");
                     panel4.revalidate(); 
                 }
             }
+            // if the multiply button is selected, and setSelectedRegionContents is true, then the
+            // error in panel4 is reset and the operator is changed
             else if(multiply.isSelected() == true) {
                 if (gcPanel.setSelectedRegionContents("*") == true) {
                     errorMessage.setText("");
                     panel4.revalidate();
                 }
+                // if setSelectedRegionContents is false, then panel4 displays an error message
                 else {
                     errorMessage.setText("Failed to set operator value");
                     panel4.revalidate(); 
                 }
             }
-            
+            // if the button selected is somehow not one of the 3, then an error is thrown
             else {
                 errorMessage.setText("Failed to set operator value");
                 panel4.revalidate();                
