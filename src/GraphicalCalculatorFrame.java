@@ -255,6 +255,7 @@ public class GraphicalCalculatorFrame extends JFrame
 			if(selectedRegion % 2 == 0) {
 			    try {
 			        number = Integer.parseInt(content);
+			        if (number >= 0 && number <= 9) {
 		                switch(selectedRegion) {
 		                    case 0:
 		                        operands[0] = number;
@@ -267,6 +268,10 @@ public class GraphicalCalculatorFrame extends JFrame
 		                         break;
 		                }
 		            }
+			        else {
+			            success = false;
+			        }
+			    }
 		         catch (NumberFormatException ex) {
 		             success = false;
 		         }
