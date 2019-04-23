@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"GraphicalCalculatorFrame"},{"p":"<Unnamed>","l":"GraphicalCalculatorFrame.GraphicalCalculatorPanel"},{"p":"<Unnamed>","l":"Todo"}]
