@@ -1,45 +1,42 @@
 public class Todo {/*
 Lab Section_________: 011
-Last Modified_______: 2019-01-24
+Last Modified_______: 2019-04-23
 OU ID_______________: 113365209
 OU EMAIL____________: aaron.t.craig-1@ou.edu
 
 Tasks:
-1. Create the Equipment constructor
-2. Complete the Equipment toString method
-3. Create a full set of getters for the Equipment class
-4. Complete the utilityBelt readFile method
-5. Complete the utilityBelt writeEquipment method
-6. Complete the utilityBelt writeStatistics method
-7. Complete the utilityBelt computeTotalWeight method
-8. Complete the utilityBelt getNamedEquipment method
-9. Complete the utilityBelt equipmentAboveCount method
-10. Complete the findMostExpensiveEquipment method
-11. Run and debug the program 
+1. Complete setUpRegions method
+2. Complete paintComponent method for the boxes
+3. Complete MouseClicked method
+4. Complete setSelectedRegionContents method
+5. Complete evaluate method
+6. Add all components to panels in the constructor
+7. Complete setOperand actionlistener
+8. Complete setOperator actionlistener
+9. Add documentation
+10. Run and debug program
 
 Estimated Time (minutes):
-1. 3
-2. 2
-3. 1
-4. 10
+1. 5
+2. 10
+3. 5
+4. 20
 5. 10
-6. 10
-7. 5
-8. 5
+6. 5
+7. 20
+8. 20
 9. 5
-10. 5
-11. 5
+10. 20
 
 Actual Time (minutes):
-1. 10
-2. 7
-3. 1
-4. 5
-5. 8
-6. 5
-7. 4
-8. 3
-9. 5
-10. 10
-11. 10
+1. 5
+2. 15
+3. 5
+4. 30
+5. 5
+6. 10
+7. 20
+8. 25
+9. 10
+10. 20
 */}
